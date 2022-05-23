@@ -1,0 +1,49 @@
+/* general style section started*/
+html {
+  font-size: 62.5%;
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color-primary: #57635c;
+  --color-secondary: #ccc;
+  --color-back: #000;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-back);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+h1 {
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+    text-align: center;
+}
+button {
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  border-radius: 3px;
+  color: var(--color-secondary);
+  background-color: var(--color-back);
+  border: 1px solid var(--color-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 1px;
+}
+button:hover{
+  color: var(--color-back);
+  background-color: var(--color-secondary);
+
+}
