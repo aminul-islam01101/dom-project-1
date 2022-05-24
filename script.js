@@ -8,13 +8,17 @@ function generateColor() {
 }
 
 function main() {
-    const button = document.querySelector('button');
+    const button = document.querySelector('button[type="button"]');
     const output = document.querySelector('#hex-code');
+    const copyButton = document.querySelector('#copy-button');
     button.addEventListener('click', () => {
         const bgColor = generateColor();
         const bodyColor = document.querySelector('body');
         bodyColor.style.backgroundColor = bgColor;
         output.value = bgColor;
+    });
+    copyButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(output.value);
     });
 }
 
