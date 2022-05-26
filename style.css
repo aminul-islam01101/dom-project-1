@@ -28,9 +28,10 @@ body {
 h1 {
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
     1px 1px 0 #fff;
-    text-align: center;
+  text-align: center;
 }
-button {
+button,
+.toast-message {
   text-transform: uppercase;
   padding: 0.8rem 2rem;
   border-radius: 3px;
@@ -41,22 +42,54 @@ button {
   cursor: pointer;
   outline: none;
   letter-spacing: 1px;
-  box-shadow: 0 0 4px 2px rgba(0,0,0,.2)
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.3);
 }
-button:hover{
+button:hover {
   color: var(--color-back);
   background-color: var(--color-secondary);
-
 }
-label{
+label {
   color: #fff;
   border: 1px solid red;
   padding: 0.8rem 2rem;
   text-transform: uppercase;
   border-radius: 3px;
-  box-shadow: 0 0 4px 2px rgba(0,0,0,.2)
+  background-color: rgb(9, 85, 85);
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
 }
-.form-group{
+.form-group {
   display: flex;
   gap: 2rem;
+}
+.toast-message {
+  background-color: rgb(9, 85, 85);
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+}
+.toast-message-slide-in {
+  animation: toast-animation-in 0.5s ease-in;
+}
+.toast-message-slide-out {
+  animation: toast-animation-out 0.5s ease-in;
+}
+@keyframes toast-animation-in {
+  from {
+    transform: translate(200px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}
+@keyframes toast-animation-out {
+  from {
+    transform: translate(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translate(200px);
+    opacity: 0;
+  }
 }
