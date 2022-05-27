@@ -22,25 +22,48 @@ function generateToastMessage(msg) {
         });
     });
 }
+/**
+ * @param {string} color
+ */
+function isValidHex(color) {
+    if (color.length !== 7) {
+        return false;
+    }
+    if (color[0] !== '#') return false;
+    // eslint-disable-next-line no-param-reassign
+    color = color.substring(1);
+    return /^[a-f0-9A-F]{6}$/i.test(color);
+}
+
 function main() {
     const button = document.querySelector('button[type="button"]');
-    const output = document.querySelector('#hex-code');
+    const input = document.querySelector('#hex-code');
+    const bodyColor = document.querySelector('body');
     const copyButton = document.querySelector('#copy-button');
     button.addEventListener('click', () => {
         const bgColor = generateColor();
-        const bodyColor = document.querySelector('body');
+
         bodyColor.style.backgroundColor = bgColor;
-        output.value = bgColor;
+        input.value = bgColor;
     });
     copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(output.value);
+        navigator.clipboard.writeText(input.value);
         if (div !== null) {
             div.remove();
         }
-        generateToastMessage(`${output.value} copied`);
+        if (isValidHex(input.value)) {
+            generateToastMessage(`${input.value} copied`);
+        } else {
+            alert('Invalid color code');
+        }
+    });
+    input.addEventListener('keyup', (event) => {
+        const color = event.target.value;
+        if (color && isValidHex) {
+            bodyColor.style.backgroundColor = color;
+        }
     });
 }
-
 window.onload = () => {
     main();
 };
