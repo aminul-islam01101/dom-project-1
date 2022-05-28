@@ -57,6 +57,35 @@ label {
   background-color: rgb(9, 85, 85);
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
 }
+#hex__input:focus {
+  outline: none;
+}
+#hex__input,
+.hash__input {
+  border: 1px solid var(--color-secondary);
+  border-radius: 3px;
+
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+  background-color: var(--color-back);
+  box-shadow: 0 0 10px px rgba(0, 0, 0, 0.5);
+}
+.input-block {
+  display: flex;
+}
+.hash__input {
+  border-right: none;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding: 0.8rem 0 0.8rem 0.8rem;
+}
+#hex__input {
+  border-left: none;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  padding: 0.8rem 0;
+}
+
 .form-group {
   display: flex;
   gap: 2rem;

@@ -1,10 +1,17 @@
+/* eslint-disable no-alert */
 // /* eslint-disable indent */
 let div = null;
 
 function generateColor() {
-    const red = Math.floor(Math.random() * 256).toString(16);
-    const green = Math.floor(Math.random() * 256).toString(16);
-    const blue = Math.floor(Math.random() * 256).toString(16);
+    const red = Math.floor(Math.random() * 256)
+        .toString(16)
+        .toUpperCase();
+    const green = Math.floor(Math.random() * 256)
+        .toString(16)
+        .toUpperCase();
+    const blue = Math.floor(Math.random() * 256)
+        .toString(16)
+        .toUpperCase();
     return `#${red}${green}${blue}`;
 }
 
@@ -26,41 +33,42 @@ function generateToastMessage(msg) {
  * @param {string} color
  */
 function isValidHex(color) {
-    if (color.length !== 7) {
+    if (color.length < 3 || color.length > 8) {
         return false;
     }
-    if (color[0] !== '#') return false;
-    // eslint-disable-next-line no-param-reassign
-    color = color.substring(1);
-    return /^[a-f0-9A-F]{6}$/i.test(color);
+
+    return /^([A-Fa-f0-9]{8}|[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i.test(color);
 }
 
 function main() {
     const button = document.querySelector('button[type="button"]');
-    const input = document.querySelector('#hex-code');
+    const input = document.querySelector('#hex__input');
     const bodyColor = document.querySelector('body');
     const copyButton = document.querySelector('#copy-button');
     button.addEventListener('click', () => {
         const bgColor = generateColor();
 
         bodyColor.style.backgroundColor = bgColor;
-        input.value = bgColor;
+        input.value = bgColor.substring(1);
     });
     copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(input.value);
+        navigator.clipboard.writeText(`#${input.value}`);
         if (div !== null) {
             div.remove();
         }
         if (isValidHex(input.value)) {
-            generateToastMessage(`${input.value} copied`);
+            generateToastMessage(`#${input.value} copied`);
         } else {
             alert('Invalid color code');
         }
     });
     input.addEventListener('keyup', (event) => {
         const color = event.target.value;
+        if (color) {
+            input.value = color.toUpperCase();
+        }
         if (color && isValidHex) {
-            bodyColor.style.backgroundColor = color;
+            bodyColor.style.backgroundColor = `#${color}`;
         }
     });
 }
