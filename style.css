@@ -13,6 +13,7 @@ html {
   --color-primary: #57635c;
   --color-secondary: #ccc;
   --color-back: #000;
+  
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -49,6 +50,7 @@ button:hover {
   background-color: var(--color-secondary);
 }
 label {
+  width: 150px;
   color: #fff;
   border: 1px solid red;
   padding: 0.8rem 2rem;
@@ -57,11 +59,13 @@ label {
   background-color: rgb(9, 85, 85);
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
 }
-#hex__input:focus {
+#hex__input:focus,
+#rgb__input:focus {
   outline: none;
 }
 #hex__input,
-.hash__input {
+.hash__input,
+#rgb__input {
   border: 1px solid var(--color-secondary);
   border-radius: 3px;
 
@@ -78,12 +82,19 @@ label {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   padding: 0.8rem 0 0.8rem 0.8rem;
+  background-color: #aaa;
+  color: var(--color-back);
+  font-weight:700;
+  padding: 0.8rem  0.2rem;
 }
 #hex__input {
   border-left: none;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  padding: 0.8rem 0;
+  padding: 0.8rem .2rem;
+}
+#rgb__input {
+  padding: 0.5rem 1rem;
 }
 
 .form-group {

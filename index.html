@@ -9,14 +9,30 @@
   </head>
   <body>
     <h1>Change the background color by clicking the following button</h1>
+
+    <!-- hex input -->
+
     <div class="form-group">
-      <label for="hex-code">background color code</label>
+      <label for="hex-code">Hexadecimal code</label>
       <div class="input-block">
         <div class="hash__input">#</div>
         <input type="text" value="000000" id="hex__input" />
       </div>
       <button id="copy-button">copy text</button>
     </div>
+
+    <!-- rgb input -->
+
+    <div class="form-group">
+      <label for="hex-code">RGB color code</label>
+      <div class="input-block">
+        <input type="text" value="rgb(255,255,255)" id="rgb__input" />
+      </div>
+      <button id="rgb-copy-button">copy text</button>
+    </div>
+
+     <!-- Change color button-->
+
     <button type="button">change color</button>
 
     <script src="script.js"></script>
