@@ -54,6 +54,38 @@ function generateToastMessage(msg) {
         });
     });
 }
+// dynamic input hex color to rgb color conversion function-6
+
+/**
+ *
+ * @param {string} hex
+ */
+function hexToRgb(hex) {
+    let red;
+    let green;
+    let blue;
+    if (hex.length === 3) {
+        const singleToDoubleRed = hex.slice(0, 1);
+        const singleToDoubleGreen = hex.slice(1, 2);
+        const singleToDoubleBlue = hex.slice(2);
+
+        red = parseInt(singleToDoubleRed + singleToDoubleRed, 16);
+        green = parseInt(singleToDoubleGreen + singleToDoubleGreen, 16);
+        blue = parseInt(singleToDoubleBlue + singleToDoubleBlue, 16);
+
+        return `rgb(${red}, ${green}, ${blue})`;
+    }
+
+    if (hex.length === 6) {
+        red = parseInt(hex.slice(0, 2), 16);
+        green = parseInt(hex.slice(2, 4), 16);
+        blue = parseInt(hex.slice(4), 16);
+
+        return `rgb(${red}, ${green}, ${blue})`;
+    }
+
+    return 'not valid hex code';
+}
 
 // hex color validation function-5
 /**
@@ -119,7 +151,11 @@ function main() {
         if (div !== null) {
             div.remove();
         }
-        generateToastMessage(`${rgbInput.value} copied`);
+        if (isValidHex(input.value)) {
+            generateToastMessage(`${rgbInput.value} copied`);
+        } else {
+            alert('Invalid color code');
+        }
     });
 
     // dynamic hex color  input addEventListener-4
@@ -133,6 +169,7 @@ function main() {
 
         if (color && isValidHex) {
             bodyColor.style.backgroundColor = `#${color}`;
+            rgbInput.value = hexToRgb(color);
         }
     });
 }
